@@ -15,11 +15,10 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # Activate the virtual en   vironment
+                # Activate the virtual environment
                 source mlip/bin/activate
 
                 # Run pytest in the virtual environment
-                sudo apt install python3-pytest
                 pytest
 
                 # Comment out exit 1 after successful setup
