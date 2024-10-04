@@ -7,15 +7,6 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'In C or Java, we can compile our program in this step'
                 echo 'In Python, we can build our package here or skip this step'
-
-                # Check if the virtual environment exists, if not, create it
-                if [ ! -d "mlip" ]; then
-                    python -m venv mlip
-                fi
-
-                # Install necessary packages in the virtual environment
-                source mlip/bin/activate
-                pip install -r requirements.txt || pip install pytest numpy pandas scikit-learn
                 '''
             }
         }
@@ -24,10 +15,11 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # Activate the virtual environment
+                # Activate the virtual en   vironment
                 source mlip/bin/activate
 
                 # Run pytest in the virtual environment
+                sudo apt install python3-pytest
                 pytest
 
                 # Comment out exit 1 after successful setup
